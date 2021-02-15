@@ -1,9 +1,10 @@
 export class Post {
 
     id: string;
-    text: string;
+    description: string;
     contentType: string;
     content: any;
+    fileName: string;
     dateCreated: Date;
     dateUpdated: Date;
 }

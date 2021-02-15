@@ -1,1 +1,46 @@
-<p>post-list works!</p>
+<br><br>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+<!-- video-testimonial-section -->
+   <div class="space-medium">
+       <div class="container">
+           <div class="row">
+               <div class="offset-xl-2 col-xl-8 offset-lg-2 col-lg-8 col-md-12 col-sm-12 col-12 text-center">
+                   <!-- section-title -->
+                   <div class="section-title">
+                       <h1>Welcome</h1>
+                       <p>Join in on the fun and share you videos and pictures. <button routerLink="/post/add-post"> Add a Post</button></p> 
+                   </div>
+               </div>
+               <!-- /.section-title -->
+           </div>
+           <div class="row">
+               <!-- video-testimonail -->
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" *ngFor="let post of posts">
+                   <div class="video-testimonial-block">
+                       <div class="video-thumbnail"></div>
+                    
+                        <div *ngIf="post.contentType==='video';else isImage">
+                            <div class="row align-items-center justify-content-center">
+                                <video width="500" height="200" controls>
+                                  <source src='http://localhost:7071/stream/{{post.fileName}}' type="video/mp4">
+                                </video>
+                              </div>
+                            </div>
+                            <ng-template #isImage>
+                                <img src='http://localhost:7071/files/{{post.fileName}}' width="500" height="200" alt="Post Image" class="" />
+                            </ng-template>
+                       
+                   </div>
+                   <div class="video-testimonial-content">
+                       <h4 class="mb10">{{ post.description }}</h4>
+                       <p style="text-align: right;"><a (click)="deletePost(post.id)">Delete</a> | 
+                        <a routerLink="/post/{{ post.id }}">
+                            View
+                          </a></p>
+                   </div>
+               </div>
+           </div>
+           <div class="row">
+        </div>
+       </div>
+   </div>

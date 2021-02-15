@@ -1,0 +1,32 @@
+<h3>View Post</h3>
+<table class="table">
+    <tr>
+        <td><label for="description_text" class="description_label">Description</label></td>
+        <td>{{ post.description}}</td>
+    </tr>
+    <tr>
+        <td> <label for="lang_selector">Content Type</label></td>
+        <td> 
+            {{ post.contentType }}
+        </td>
+    </tr>
+    <tr>    
+        <td><label for="content" class="">Content</label></td>
+        <td>
+            <div *ngIf="isVideo;else isImage">
+            <div class="row align-items-center justify-content-center">
+                <video width="1000" height="400" controls>
+                  <source src='http://localhost:7071/stream/{{post.fileName}}' type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <ng-template #isImage>
+                <img [src]="postFile" alt="Post Image" class="" />
+            </ng-template>
+        </td>
+    </tr>
+    <tr></tr>
+    <tr>
+
+    </tr>
+</table>
